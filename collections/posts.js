@@ -1,5 +1,10 @@
 Posts = new Meteor.Collection('posts');
 
+Posts.allow({
+  update: ownsDocument,
+  remove: ownsDocument
+});
+
 Meteor.methods({
   post: function(postAttributes){
     var user = Meteor.user(),
@@ -17,13 +22,14 @@ Meteor.methods({
         postsWithSameLink._id);
     
     // whitelisted keys
-    var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'),
+    var post = _.extend(_.pick(postAttributes,'title', 'url', 'message'),
       {
         userId: user._id,
         author: user.username,
         submitted: new Date().getTime()
       });
-
+    
+    var postId = Posts.insert(post);
     return postId;
   }
 });
