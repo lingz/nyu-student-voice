@@ -1,0 +1,12 @@
+<template name="userItem">
+  <div class="post">
+    <div class="post-content">
+      {{username}} - <span style="color:blue;">{{profile.type}}</span>
+    </div>
+    {{#if admin}}
+      <a id="changeUser" class="btn btn-warning pull-right" href="#" data-userid="{{_id}}" data-newtype="user">Demote</a>
+    {{else}}
+      <a id="changeUser" class="btn btn-success pull-right" href="#" data-userid="{{_id}}" data-newtype="admin">Promote</a>
+    {{/if}}
+  </div>
+</template>

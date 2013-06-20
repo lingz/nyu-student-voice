@@ -9,5 +9,8 @@ Template.header.helpers({
     });
 
     return active && 'active';
+  },
+  isAdmin: function() {
+    return Session.get("admin");
   }
 });

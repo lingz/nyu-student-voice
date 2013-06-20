@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="{{postsListPath}}">Microscope</a>
+      <a class="brand" href="{{homePath}}">Microscope</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li class="{{activeRouteClass 'home' 'newPosts'}}">
@@ -15,9 +15,17 @@
           <li class="{{activeRouteClass  'bestPosts'}}">
             <a href="{{bestPostsPath}}">Best</a>
           </li>
+          <li class="{{activeRouteClass 'resolvedPosts'}}">
+            <a href="{{resolvedPostsPath}}">Resolved</a>
+          </li>
+          {{#if isAdmin}}
+            <li>
+              <a href="{{userListPath}}">Manage Users</a>
+            </li>
+          {{/if}}
           {{#if currentUser}}
             <li>
-              <a href="{{postSubmitPath}}">Submit Post</a>
+              <a href="{{postSubmitPath}}">Submit Issue</a>
             </li>
             <li class="dropdown">
               {{> notifications}}

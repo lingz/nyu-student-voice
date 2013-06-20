@@ -1,6 +1,7 @@
 Template.newPosts.helpers({
   options: function() {
     return {
+      resolved: false,
       sort: {submitted: -1},
       handle: newPostsHandle
     };
@@ -9,8 +10,18 @@ Template.newPosts.helpers({
 Template.bestPosts.helpers({
   options: function() {
     return {
+      resolved: false,
       sort: {votes: -1, submitted: -1},
       handle: bestPostsHandle
+    };
+  }
+});
+Template.resolvedPosts.helpers({
+  options: function() {
+    return {
+      resolved: true,
+      sort: {submitted: -1},
+      handle: resolvedPostsHandle
     };
   }
 });
@@ -23,7 +34,7 @@ Template.postsList.helpers({
   },
   postsWithRank: function() {
     var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
-    return Posts.find({}, options).map(function(post) {
+    return Posts.find({resolved: this.resolved}, options).map(function(post) {
       post._rank = i;
       i += 1;
       return post;
