@@ -1,0 +1,13 @@
+<template name="postResolve">
+  {{> postItem post }}
+  {{> postDetail post }}
+  <form class="main">
+    <h3 id="resolution"> Resolution </h3>
+    <div class="control-group">
+      <div class="controls"><textarea id="resolution-text" class="input-block-level" type="text" name="resolution" rows="10" /></div>
+    </div>
+    <div class="control-group">
+      <div class="controls"><input class="btn btn-success btn-block" type="submit" value="Submit" /></div>
+    </div>
+  </form>
+</template>

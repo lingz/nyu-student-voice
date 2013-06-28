@@ -1,0 +1,16 @@
+<template name="postDetail">
+  {{> postBody options}}
+</template>
+
+<template name="postResolution">
+  {{> postBody options}}
+</template>
+
+<template name="postBody">
+  <div class="post-content">
+    <div class="post">
+      <h3 id="{{titleColor title}}"> {{title}} </h3>
+      <p> {{body}}</p>
+    </div>
+  </div>
+</template>

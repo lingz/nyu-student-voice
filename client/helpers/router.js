@@ -1,5 +1,5 @@
 Meteor.Router.add({
-  '/': {to: 'newPosts', as: 'home'},
+  '/': {to: 'bestPosts', as: 'home'},
   '/new': 'newPosts',
   '/best': 'bestPosts',
   '/resolved': 'resolvedPosts',
@@ -10,6 +10,10 @@ Meteor.Router.add({
   },
   '/posts/:_id/edit': {
     to: 'postEdit',
+    and: function(id) { Session.set('currentPostId', id);}
+  },
+  '/posts/:_id/resolve': {
+    to: 'postResolve',
     and: function(id) { Session.set('currentPostId', id);}
   },
   '/submit': 'postSubmit'

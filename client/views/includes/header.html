@@ -6,17 +6,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="{{homePath}}">Microscope</a>
+      <a class="brand" href="{{homePath}}">NYUAD Student Voice</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="{{activeRouteClass 'home' 'newPosts'}}">
-            <a href="{{homePath}}">New</a>
+          <li class="{{activeRouteClass  'home' 'bestPosts'}}">
+            <a href="{{homePath}}">Hottest Issues</a>
           </li>
-          <li class="{{activeRouteClass  'bestPosts'}}">
-            <a href="{{bestPostsPath}}">Best</a>
+          <li class="{{activeRouteClass 'newPosts'}}">
+            <a href="{{newPostsPath}}">Newest Issues</a>
           </li>
           <li class="{{activeRouteClass 'resolvedPosts'}}">
-            <a href="{{resolvedPostsPath}}">Resolved</a>
+            <a href="{{resolvedPostsPath}}">Resolved Issues</a>
           </li>
           {{#if isAdmin}}
             <li>

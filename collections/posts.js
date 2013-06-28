@@ -5,10 +5,23 @@ Posts.allow({
   remove: ownsDocument
 });
 
+Posts.allow({
+  remove: isAdmin,
+  update: isAdmin
+});
+
 Posts.deny({
   update: function(userId, post, fieldNames) {
-    // may only edit the following fields:
-    return (_.without(fieldNames, 'title', 'message').length > 0);
+    if (isAdmin === false) {
+      // may only edit the following fields:
+      return (_.without(fieldNames, 'title', 'message').length > 0);
+    } else if (ownsDocument) {
+      // if they are an admin editing their own post - they may also resolve it
+      return (_.without(fieldNames, 'title', 'message', 'resolved', 'resolution').length > 0);
+    }  else {
+      // otherwise they can only resolve posts
+      return (_.without(fieldNames, 'resolved', 'resolution').length > 0);
+    }
   }
 });
 
@@ -35,6 +48,8 @@ Meteor.methods({
         commentsCount: 0,
         resolved: false,
         upvoters: [],
+        subscribers: [user._id],
+        read: [],
         votes: 0
       });
     
@@ -44,7 +59,7 @@ Meteor.methods({
   upvote: function(postId) {
     var user = Meteor.user();
     if (!user) {
-      throw new Meteor.Error(401, "You need to login to upvte");
+      throw new Meteor.Error(401, "You need to login to unvote");
     } 
     Posts.update({
       _id: postId,
@@ -53,6 +68,31 @@ Meteor.methods({
       $addToSet: {upvoters: user._id},
       $inc: {votes: 1}
     });
+    return true;
+  },
+  unvote: function(postId) {
+    var user = Meteor.user();
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to unvote");
+    } 
+    Posts.update({
+      _id: postId,
+      upvoters: user._id
+    }, {
+      $pull: {upvoters: user._id},
+      $inc: {votes: -1}
+    });
+    return true;
+  },
+  resolve: function(postId, resolution) {
+    if (! Meteor.call("isAdmin")) {
+      throw new Meteor.Error(401, "You need to be an admin to resolve a post");
+    }
+
+    Post.update(postId, {$set: {resolved: true, resolution: resolution}});
+    
+    // resolution success
+    return true;
   }
 });
 

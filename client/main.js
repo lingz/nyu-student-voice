@@ -17,7 +17,6 @@ Deps.autorun(function() {
     Session.set("admin", true);
     adminMode = true;
   } else {
-    Meteor.Router.to("newPosts");
     Session.set("admin", false);
     if (adminMode) {
       userHandle.stop();

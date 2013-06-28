@@ -1,15 +1,23 @@
 <template name="postItem">
   <div class="post">
-    <a class="upvote btn {{upvotedClass}}" href="">⬆</a>
+    <a class="upvote btn {{upvotedClass}}" href=""><h5>⬆ {{ pluralize votes "Vote" }}</h5></a>
     <div class="post-content">
-      <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
+      <h3><a href="{{postPagePath this}}">{{title}}</a><span>{{domain}}</span></h3>
       <p>
-        {{ pluralize votes "Vote" }},
         submitted by {{author}},
         <a href="{{postPagePath this}}">{{commentsCount}} comments </a>
         {{#if ownPost}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
       </p>
     </div>
+    <span class="discuss btn disabled {{resolvedClass}}">{{resolvedStatus}}</span>
+    {{#if isAdmin}} 
+      <a class="discuss btn btn-danger delete" href="#">Delete Issue</a>
+    {{#if canResolve}}
+      <a class="discuss btn btn-primary" href="{{postResolvePath this}}">Resolve Issue</a>
+    {{else}}}
+      <a class="discuss btn btn-warning" href="{{postResolvePath this}}">Edit Resolution</a>
+    {{/if}}
+    {{/if}}
     <a class="discuss btn" href="{{postPagePath this}}">Discuss</a>
   </div>
 </template>

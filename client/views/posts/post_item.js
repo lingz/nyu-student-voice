@@ -11,8 +11,30 @@ Template.postItem.helpers({
     var userId = Meteor.userId();
     if (userId && ! _.include(this.upvoters, userId)) {
       return 'btn-primary upvoteable';
+    } else if (userId){
+      return 'btn-success unvotable';
     } else {
-      return 'disabled';
+      return "disabled";
+    }
+  },
+  isAdmin: function() {
+    return Session.get("admin");
+  },
+  canResolve: function() {
+    return !(this.resolved);
+  },
+  resolvedStatus: function() {
+    if (this.resolved) {
+      return "Resolved";
+    } else {
+      return "Unresolved";
+    }
+  },
+  resolvedClass: function() {
+    if (this.resolved) {
+      return "btn-success";
+    } else {
+      return "btn-warning";
     }
   }
 });
@@ -27,6 +49,24 @@ Template.postItem.events({
         console.log(resp);
       }
     });
+  },
+  'click .unvotable': function(e) {
+    e.preventDefault();
+    Meteor.call('unvote', this._id, function(err, resp){
+      if (err) {
+        console.log(err.reason);
+      } else {
+        console.log(resp);
+      }
+    });
+  },
+  'click .delete':  function(e) {
+    e.preventDefault();
+    if (confirm("Are you sure you want to delete this?")){
+      Posts.remove(this._id, function(err) {
+        Meteor.throwError(err.reason);
+      });
+    }
   }
 });
 
@@ -56,3 +96,29 @@ Template.postItem.rendered = function(){
     $this.css("top",  "0px").removeClass("invisible");
   }); 
 };
+
+// make the upvoted look downvotable
+$(function () {
+  $(document).on({
+    mouseenter: function() {
+      var pin = $(event.target);
+      pin.addClass("hovered");
+      temp = pin.html();
+      pin.html("Remove Vote");
+      pin.addClass("btn-danger");
+      pin.removeClass("btn-success");
+      // bind a listener to see if you've moved out (b/c mouseleave doesn't work properly)
+      $(window).bind("mousemove", function(event) {
+        var target = $(event.target);
+        if (!target.hasClass("hovered")) {
+          var pin = $(".hovered");
+          pin.html(temp);
+          pin.removeClass("btn-danger");
+          pin.removeClass("hovered");
+          pin.addClass("btn-success");
+          $(window).unbind("mousemove");
+        }
+      });
+    }
+  }, '.unvotable');
+});

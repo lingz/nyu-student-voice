@@ -21,6 +21,7 @@ if (Posts.find().count() === 0) {
       submitted: now - i * 3600 * 1000,
       commentsCount: 0,
       upvoters: [], votes: 0,
+      read: [admin._id],
       resolved: false
     });
   }

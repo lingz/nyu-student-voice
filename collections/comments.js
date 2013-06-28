@@ -19,12 +19,13 @@ Meteor.methods({
       submitted: new Date().getTime()
     });
 
-    Posts.update(comment.postId, {$inc: {commentsCount: 1}});
+    Posts.update(comment.postId, {
+      $inc: {commentsCount: 1}, 
+      $addToSet: {subscribers: user._id}
+    });
 
-    console.log(comment);
     comment._id =  Comments.insert(comment);
-    console.log(comment);
-    createCommentNotificiation(comment);
+    Meteor.call('createCommentNotificiation', comment);
     return comment._id;
   }
 });

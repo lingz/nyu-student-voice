@@ -1,7 +1,6 @@
 Template.newPosts.helpers({
   options: function() {
     return {
-      resolved: false,
       sort: {submitted: -1},
       handle: newPostsHandle
     };
@@ -34,7 +33,8 @@ Template.postsList.helpers({
   },
   postsWithRank: function() {
     var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
-    return Posts.find({resolved: this.resolved}, options).map(function(post) {
+    var query = this.resolved ? {resolved: this.resolved} : {};
+    return Posts.find(query, options).map(function(post) {
       post._rank = i;
       i += 1;
       return post;
@@ -45,7 +45,7 @@ Template.postsList.helpers({
 Template.postsList.events({
   'click .load-more': function(e) {
     e.preventDefault();
-    this.loadNextPage();
+    this.handle.loadNextPage();
   }
 });
 
