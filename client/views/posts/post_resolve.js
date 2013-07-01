@@ -8,14 +8,14 @@ Template.postResolve.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    var currentId = Session.get("currentPostId");
+    var postId = Session.get("currentPostId");
     var resolution = $(event.target).find("[name=resolution]").val();
 
-    Posts.update(currentId, {$set: {resolved: true, resolution: resolution}});
+    Posts.update(postId, {$set: {resolved: true, resolution: resolution}, $addToSet: {subscribers: Meteor.userId()}});
 
-    Meteor.Router.to('postPage', currentId);
+    Meteor.Router.to('postPage', postId);
 
-
+    Meteor.call("createResolutionNotification", postId);
   }
 });
 

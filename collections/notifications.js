@@ -1,7 +1,18 @@
 Notifications = new Meteor.Collection('notifications');
 
+Notifications.allow({
+  update: function(userId, doc, fieldNames, modifier) {
+    if (_.without(fieldNames, "read").length > 0 && modifier == "$addToSet") {
+      return true;
+    }
+  }
+});
+
 Meteor.methods({
   createCommentNotificiation: function(comment) { 
+    if (!Comments.findOne(comment._id)) {
+      throw new Meteor.Error(412, "This comment doesn't exist");
+    }
     var post = Posts.findOne(comment.postId);
     var notification = Notifications.findOne({postId: post._id, type: "comment"});
     if (!notification){
@@ -14,14 +25,38 @@ Meteor.methods({
       });
     } else {
       Notifications.update(notification._id, {
-        $addToSet: {commenters: comment.author},
-        $set: {read: [comment.userId], subscribers: post.subscribers}
+        $set: {read: [comment.userId], subscribers: post.subscribers, commenters: [comment.author]}
       });
     }
   },
-  readNotification: function(notificationId) {
-    Notifications.update({
-      $addToSet: {read: Meteor.user()._id}
+  createResolutionNotification: function(postId) {
+    var post = Posts.findOne(postId);
+    if (!this.isSimulation && !isAdmin()) {
+      throw new Meteor.Error(403, "Sorry, you don't have permission to do that");
+    } else if (!post.resolved) {
+      throw new Meteor.Error(412, "That post is not yet resolved");
+    }
+    var notification = Notifications.findOne({postId: postId, type: "resolution"});
+    if (!notification){
+      Notifications.insert({
+        type: "resolution",
+        subscribers: post.subscribers,
+        postId: postId,
+        commenters: [Meteor.user().username],
+        read: [Meteor.userId()]
+      });
+    } else {
+      Notifications.update(notification._id, {
+        $set: {read: [Meteor.userId()], subscribers: post.subscribers, commenters: [Meteor.user().username]}
+      });
+    }
+  },
+  readNotification: function(postId) {
+    Notifications.update({postId: postId}, {
+      $addToSet: {read: Meteor.userId()}
    });
+  },
+  readAllNotifications: function(notificationIds) {
+    Notifications.update({_id: {$in: notificationIds}}, {$addToSet: {read: Meteor.userId()}});
   }
 });

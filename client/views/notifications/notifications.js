@@ -20,11 +20,32 @@ Template.notification.helpers({
   postTitle: function() {
     post = Posts.findOne(this.postId);
     return post.title;
+  },
+  isComment: function() {
+    return this.type === "comment";
+  },
+  isResolution: function() {
+    return this.type === "resolution";
+  }
+});
+
+Template.notifications.events({
+  'click #clear-notifications': function(e) {
+    e.preventDefault();
+
+    var notificationIds = _.map(Notifications.find().fetch(), function(notification) {
+      return notification._id;
+    });
+
+    Meteor.call("readAllNotifications", notificationIds);
+
   }
 });
 
 Template.notification.events({
   'click a': function() {
-    Meteor.call('readNotification', this._id);
+    Meteor.call('readNotification', this.postId);
   }
 });
+
+

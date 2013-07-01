@@ -33,7 +33,7 @@ Template.postsList.helpers({
   },
   postsWithRank: function() {
     var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
-    var query = this.resolved ? {resolved: this.resolved} : {};
+    var query = (this.resolved !== undefined) ? {resolved: this.resolved} : {};
     return Posts.find(query, options).map(function(post) {
       post._rank = i;
       i += 1;

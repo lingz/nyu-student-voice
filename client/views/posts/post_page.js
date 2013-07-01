@@ -6,3 +6,7 @@ Template.postPage.helpers({
     return Comments.find();
   }
 });
+
+Template.postPage.created = function() {
+  Meteor.call("readNotification", Session.get("currentPostId"));
+};

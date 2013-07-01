@@ -8,6 +8,7 @@
   </a>
   <ul class="notification dropdown-menu">
     {{#if notificationCount}}
+      <li><span><a id="clear-notifications" href="#">Clear Notifications</a></span></li>
       {{#each notifications}}
         {{> notification}}
       {{/each}}
@@ -20,7 +21,12 @@
 <template name="notification">
   <li>
     <a href="{{postPagePath postId}}">
-      <strong>{{commenterNames}}</strong> commented on your post {{postTitle}}
+      {{#if isComment}}
+      <strong>{{commenterNames}}</strong> commented on your issue: "{{postTitle}}"
+      {{/if}}
+      {{#if isResolution}}
+      <strong>{{commenterNames}}</strong> resolved your issue: "{{postTitle}}"
+      {{/if}}
     </a>
   </li>
 </template>
