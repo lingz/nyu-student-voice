@@ -1,23 +1,32 @@
 <template name="postItem">
   <div class="post">
-    <a class="upvote btn {{upvotedClass}}" href=""><h5>⬆ {{ pluralize votes "Vote" }}</h5></a>
-    <div class="post-content">
-      <h3><a href="{{postPagePath this}}">{{title}}</a><span>{{domain}}</span></h3>
-      <p>
-        submitted by {{author}},
-        <a href="{{postPagePath this}}">{{commentsCount}} comments </a>
-        {{#if ownPost}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
-      </p>
+    <div class="upvote-container">
+      {{#if resolvedStatus}}
+        <a class="upvote btn disabled btn-success" href="">Resolved</a>
+      {{else}}
+        <a class="upvote btn {{upvotedClass}}" href="">⬆ {{ pluralize votes "Vote" }}</a>
+      {{/if}}
     </div>
-    <span class="discuss btn disabled {{resolvedClass}}">{{resolvedStatus}}</span>
-    {{#if isAdmin}} 
-      <a class="discuss btn btn-danger delete" href="#">Delete Issue</a>
-    {{#if canResolve}}
-      <a class="discuss btn btn-primary" href="{{postResolvePath this}}">Resolve Issue</a>
-    {{else}}}
-      <a class="discuss btn btn-warning" href="{{postResolvePath this}}">Edit Resolution</a>
-    {{/if}}
-    {{/if}}
-    <a class="discuss btn" href="{{postPagePath this}}">Discuss</a>
+    <div class="post-content-container">
+      <div class="post-content">
+        <h3><a href="{{postPagePath this}}">{{title}}</a><span>{{domain}}</span></h3>
+        <p>
+          submitted by {{author}},
+          <a href="{{postPagePath this}}">{{commentsCount}} comments </a>
+          {{#if ownPost}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
+        </p>
+      </div>
+    </div>
+    <div class="post-buttons">
+      {{#if isAdmin}} 
+        <a class="discuss btn btn-danger delete" href="#">Delete Issue</a>
+      {{#if canResolve}}
+        <a class="discuss btn btn-primary" href="{{postResolvePath this}}">Resolve Issue</a>
+      {{else}}}
+        <a class="discuss btn btn-warning" href="{{postResolvePath this}}">Edit Resolution</a>
+      {{/if}}
+      {{/if}}
+      <a class="discuss btn" href="{{postPagePath this}}">Discuss</a>
+    </div>
   </div>
 </template>

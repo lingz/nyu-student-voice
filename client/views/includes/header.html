@@ -7,33 +7,35 @@
         <span class="icon-bar"></span>
       </a>
       <a class="brand" href="{{homePath}}">NYUAD Student Voice</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="{{activeRouteClass  'home' 'bestPosts'}}">
-            <a href="{{homePath}}">Hottest Issues</a>
-          </li>
-          <li class="{{activeRouteClass 'newPosts'}}">
-            <a href="{{newPostsPath}}">Newest Issues</a>
-          </li>
-          <li class="{{activeRouteClass 'resolvedPosts'}}">
-            <a href="{{resolvedPostsPath}}">Resolved Issues</a>
-          </li>
-          {{#if isAdmin}}
-            <li>
-              <a href="{{userListPath}}">Manage Users</a>
+      <div>
+        <nav id="menu">
+          <ul class="nav">
+            <li class="{{activeRouteClass  'home' 'bestPosts'}}">
+              <a href="{{homePath}}">Hottest Issues</a>
             </li>
-          {{/if}}
-          {{#if currentUser}}
-            <li>
-              <a href="{{postSubmitPath}}">Submit Issue</a>
+            <li class="{{activeRouteClass 'newPosts'}}">
+              <a href="{{newPostsPath}}">All Issues</a>
             </li>
-            <li class="dropdown">
-              {{> notifications}}
+            <li class="{{activeRouteClass 'resolvedPosts'}}">
+              <a href="{{resolvedPostsPath}}">Resolved Issues</a>
             </li>
-          {{/if}}
-        </ul>
+            {{#if isAdmin}}
+              <li>
+                <a href="{{userListPath}}">Manage Users</a>
+              </li>
+            {{/if}}
+            {{#if currentUser}}
+              <li>
+                <a href="{{postSubmitPath}}">Submit Issue</a>
+              </li>
+              <li class="dropdown">
+                {{> notifications}}
+              </li>
+            {{/if}}
+          </ul>
+        </nav>
         <ul class="nav pull-right">
-          <li>{{loginButtons}}</li>
+          <li>{{loginButtons align="right"}}</li>
         </ul>
       </div>
     </div>

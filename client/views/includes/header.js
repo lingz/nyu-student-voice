@@ -14,3 +14,7 @@ Template.header.helpers({
     return Session.get("admin");
   }
 });
+
+Template.header.rendered = function() {
+  $(".nav-collapse").removeClass("nav-collapse");
+};

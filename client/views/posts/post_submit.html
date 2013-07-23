@@ -1,19 +1,22 @@
 <template name="postSubmit">
-  <form class="main" action="">
+  <form class="main centered-form" action="">
+    <div class="form-contents">
     <div class="control-group">
-    <div class="controls">
-      <h1>Submit an Issue</h1>
+      <div class="controls">
+        <h1>Submit an Issue</h1>
+      </div>
     </div>
-    <div class="control-group">
-      <label class="control-label" for="title">Title</label>
-      <div class="controls"><input class="input-block-level" type="text" name="title" value="" placeholder="Name Your Issue" /></div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="message">Details</label>
-      <div class="controls"><textarea class="input-block-level" id="" name="message" rows="10" type="text" value=""></textarea></div>
-    </div>
-    <div class="control-group">
-      <div class="controls"><input class="btn btn-primary btn-block" type="submit" value="Submit" /></div>
+      <div class="control-group">
+        <label class="control-label" for="title">Title</label>
+        <div class="controls"><input class="block-level" type="text" name="title" value="" placeholder="Name Your Issue" /></div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="message">Details</label>
+        <div class="controls"><textarea class="block-level" id="" name="message" rows="10" type="text" value=""></textarea></div>
+      </div>
+      <div class="control-group">
+        <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Submit" /></div>
+      </div>
     </div>
   </form>
 </template>

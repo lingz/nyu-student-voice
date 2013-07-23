@@ -48,5 +48,3 @@ Template.postsList.events({
     this.handle.loadNextPage();
   }
 });
-
-

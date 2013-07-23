@@ -25,9 +25,9 @@ Template.postItem.helpers({
   },
   resolvedStatus: function() {
     if (this.resolved) {
-      return "Resolved";
+      return true;
     } else {
-      return "Unresolved";
+      return false;
     }
   },
   resolvedClass: function() {
@@ -120,5 +120,5 @@ $(function () {
         }
       });
     }
-  }, '.unvotable');
+  }, 'a.unvotable');
 });

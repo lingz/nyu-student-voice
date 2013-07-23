@@ -6,8 +6,10 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 body {
+    min-width: 960px;
     background: #eee;
     color: #666666;
+    padding: 0px 20px;
 }
 .navbar { margin-bottom: 10px }
 .navbar .navbar-inner {
@@ -31,17 +33,27 @@ body {
 .post:after { clear: both }
 .post.invisible { opacity: 0 }
 .post .upvote {
-    display: block;
+    display: table-cell;
+    vertical-align: middle;
     margin: 0px 12px 0 0;
-    float: left;
-    width: 90px;
-    height: 40px;
+    width: 120px;
+    height: 60px;
     line-height: 40px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    padding: 0px;
 }
-.post .post-content { float: left }
+.upvote h5 {
+    color: white;  
+}
+.post .post-content-container { float: left }
+.post .post-content {
+    display: table-cell;
+    vertical-align: middle;
+}
 .post .post-content h3 {
     margin: 0;
-    line-height: 1.4;
+    line-height: 2.0;
     font-size: 18px;
 }
 .post .post-content h3 a {
@@ -56,11 +68,15 @@ body {
 }
 .post .post-content p { margin: 0 }
 .post .discuss {
-    display: block;
-    float: right;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
     margin-top: 7px;
     margin-right: 10px;
-    width: 100px;
+    width: 140px;
+    height: 60px;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 3px 10px;
 }
 .comments {
     list-style-type: none;
@@ -104,4 +120,42 @@ body {
 
 #details {
     color: red;
+}
+
+.upvote-container {
+    display: table;
+    float: left;
+    margin-right: 20px;
+}
+
+.post-buttons {
+    display: table;
+    float: right;
+}
+
+.dropdown-menu {
+    right: 0px;
+    left: auto;
+}
+
+.form-contents {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.btn-block {
+    margin-top: 20px;
+    box-sizing:content-box;
+    -moz-box-sizing:content-box; /* Firefox */
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.block-level {
+    width: 100%;
+    padding: 5px;
+}
+
+h3 {
+    line-height: 25px;
 }

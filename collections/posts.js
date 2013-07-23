@@ -12,15 +12,16 @@ Posts.allow({
 
 Posts.deny({
   update: function(userId, post, fieldNames) {
+    console.log(fieldNames);
     if (isAdmin === false) {
       // may only edit the following fields:
-      return (_.without(fieldNames, 'title', 'message').length > 0);
+      return (_.without(fieldNames, 'title', 'message', 'subscribers').length > 0);
     } else if (ownsDocument) {
       // if they are an admin editing their own post - they may also resolve it
-      return (_.without(fieldNames, 'title', 'message', 'resolved', 'resolution').length > 0);
+      return (_.without(fieldNames, 'title', 'message', 'resolved', 'resolution', 'subscribers').length > 0);
     }  else {
       // otherwise they can only resolve posts
-      return (_.without(fieldNames, 'resolved', 'resolution').length > 0);
+      return (_.without(fieldNames, 'resolved', 'resolution', 'subscribers').length > 0);
     }
   }
 });
