@@ -1,17 +1,19 @@
 <template name="header">
-  <header class="navbar navbar-inverse">
-    <div class="navbar-inner">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="{{homePath}}">NYUAD Student Voice</a>
-      <div>
-        <nav id="menu">
-          <ul class="nav">
+  <div id="demo-horizontal-menu">
+      <ul id="std-menu-items">
+        <li> 
+          <a href="#"> Notifications </a>
+          <ul>
+            <li>
+             {{> notifications}}
+            </li>
+          </ul>
+        </li>
+        <li> 
+          <a href="#"> Filter </a>
+          <ul>
             <li class="{{activeRouteClass  'home' 'bestPosts'}}">
-              <a href="{{homePath}}">Hottest Issues</a>
+              <a href="#">Hottest Issues</a>
             </li>
             <li class="{{activeRouteClass 'newPosts'}}">
               <a href="{{newPostsPath}}">All Issues</a>
@@ -19,7 +21,10 @@
             <li class="{{activeRouteClass 'resolvedPosts'}}">
               <a href="{{resolvedPostsPath}}">Resolved Issues</a>
             </li>
-            {{#if isAdmin}}
+        </li>
+        <li> 
+          <a href="#"> User </a></li>
+          {{#if isAdmin}}
               <li>
                 <a href="{{userListPath}}">Manage Users</a>
               </li>
@@ -28,16 +33,8 @@
               <li>
                 <a href="{{postSubmitPath}}">Submit Issue</a>
               </li>
-              <li class="dropdown">
-                {{> notifications}}
-              </li>
-            {{/if}}
-          </ul>
-        </nav>
-        <ul class="nav pull-right">
-          <li>{{loginButtons align="right"}}</li>
-        </ul>
-      </div>
+            {{/if}} 
+      </ul>
     </div>
   </header>
 </template>
