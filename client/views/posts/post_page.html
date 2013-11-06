@@ -5,16 +5,19 @@
     {{#if resolved}}
       {{> postResolution}}
     {{/if}}
-    <ul class="comments">
-      {{#each comments}}
-        {{> comment}}
-      {{/each}}
-    </ul>
-    {{#if currentUser}}
-      {{> commentSubmit}}
-    {{else}}
-      <p>Please log in to leave a comment</p>
-    {{/if}}
-  {{/with}}
+    <div class="post">
+      <div class = "whiteblur post-background"></div>
+      <ul class="comments">
+        {{#each comments}}
+          {{> comment}}
+        {{/each}}
+      </ul>
+      {{#if currentUser}}
+        {{> commentSubmit}}
+      {{else}}
+        <p>Please log in to leave a comment</p>
+      {{/if}}
+    {{/with}}
+  </div>
 </template>
 

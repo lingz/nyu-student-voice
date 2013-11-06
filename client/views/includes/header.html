@@ -1,6 +1,9 @@
 <template name="header">
   <div id="demo-horizontal-menu">
       <ul id="std-menu-items">
+         <li>
+          <a href="#"> Submit Issue </a>
+        </li>
         <li> 
           <a href="#"> Notifications </a>
           <ul>
@@ -9,6 +12,7 @@
             </li>
           </ul>
         </li>
+
         <li> 
           <a href="#"> Filter </a>
           <ul>
@@ -21,19 +25,25 @@
             <li class="{{activeRouteClass 'resolvedPosts'}}">
               <a href="{{resolvedPostsPath}}">Resolved Issues</a>
             </li>
+          </ul>
         </li>
-        <li> 
-          <a href="#"> User </a></li>
+
+        <li>
+        <a href="#" class="user-dropdown"> User </a>
+          <ul>
           {{#if isAdmin}}
-              <li>
-                <a href="{{userListPath}}">Manage Users</a>
-              </li>
-            {{/if}}
-            {{#if currentUser}}
-              <li>
-                <a href="{{postSubmitPath}}">Submit Issue</a>
-              </li>
-            {{/if}} 
+            <li>
+              <a href="{{userListPath}}">Manage Users</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          {{/if}}
+          {{#if currentUser}}
+          <a href="{{postSubmitPath}}">Submit Issue</a>
+        </li>
+          {{/if}} 
       </ul>
     </div>
   </header>
