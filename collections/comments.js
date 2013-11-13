@@ -12,10 +12,17 @@ Meteor.methods({
     } else if (!commentAttributes.postId) {
       throw new Meteor.Error(422, "Your comment is not attached to any posts");
     }
+    if (!commentAttributes.anonymous) {
+      userId = user._id;
+      author = user.username;
+    } else {
+      userId = "anon";
+      author = "Anonymous";
+    }
 
     comment = _.extend(_.pick(commentAttributes, 'postId', 'body'), {
-      userId: user._id,
-      author: user.username,
+      userId: userId,
+      author: author,
       submitted: new Date().getTime()
     });
 
