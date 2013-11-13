@@ -15,6 +15,19 @@ Template.header.helpers({
   }
 });
 
+Template.header.events({
+  "click #login": function(e) {
+    Meteor.loginWithGoogleApps({
+      requestPermissions: ["email"],
+      requestOfflineToken: true
+    });
+  },
+  "click #logout": function(e) {
+    Meteor.logout();
+    window.location = "https://accounts.google.com/logout";
+  }
+});
+
 Template.header.rendered = function() {
   YUI({
       classNamePrefix: 'pure'

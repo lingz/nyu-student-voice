@@ -41,9 +41,12 @@
         <li>
           {{/if}}
           {{#if currentUser}}
-          <a href="{{postSubmitPath}}">Submit Issue</a>
-        </li>
+						<a href="{{postSubmitPath}}">Submit Issue</a>
+						<a id="logout" href="#">Logout</a>
+          {{else}}
+						<a id="login" href="#">Login with NYU</a>
           {{/if}} 
+        </li>
       </ul>
     </div>
   </header>
