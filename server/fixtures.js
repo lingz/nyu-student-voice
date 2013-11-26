@@ -1,4 +1,11 @@
-if (Posts.find().count() === 0) {
+function isDevEnv() {
+  if (process.env.ROOT_URL == "http://localhost:3000/") {
+    return true;
+  } else  {
+    return false;
+  }
+}
+if (Posts.find().count() === 0 && isDevEnv()) {
   var now = Date();
   
   var id = Accounts.createUser({
