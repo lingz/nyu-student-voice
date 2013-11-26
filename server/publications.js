@@ -1,6 +1,7 @@
 Meteor.publish('newPosts', function(limit) {
   return Posts.find({sort: {submitted: -1}, limit: limit}, {subscribers: -1});
 });
+
 Meteor.publish('singlePost', function(id) {
   return id && Posts.find(id, {subscribers: -1});
 });
@@ -24,6 +25,6 @@ Meteor.publish('notifications', function(){
 Meteor.publish(('users'), function() {
   user = Meteor.users.findOne(this.userId);
   if (user.profile.type == "admin") {
-    return Meteor.users.find({}, {fields: {"username": 1, "profile.type": 1}});
+    return Meteor.users.find({}, {fields: {"username": 1, "profile.type": 1, "services": 1}});
   }
 });

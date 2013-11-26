@@ -38,9 +38,9 @@ Meteor.methods({
       throw new Meteor.Error(422, "Please fill in an issue title");
     }
 
-    if (!commentAttributes.anonymous) {
+    if (!postAttributes.anonymous) {
       userId = user._id;
-      author = user.username;
+      author = user.services.googleApps.name;
     } else {
       userId = "anon";
       author = "Anonymous";
@@ -51,7 +51,7 @@ Meteor.methods({
     var post = _.extend(_.pick(postAttributes,'title', 'message'),
       {
         userId: userId,
-        author: Anonymous,
+        author: author,
         submitted: new Date().getTime(),
         commentsCount: 0,
         resolved: false,

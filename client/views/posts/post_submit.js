@@ -5,7 +5,7 @@ Template.postSubmit.events({
     var post = {
       title: $(event.target).find('[name=title]').val(),
       message: $(event.target).find('[name=message]').val(),
-      anonymous: $(event.target).find('.anonymous-check').hasClass("checked")
+      anonymous: $(event.target).find('[name=anon]').is(':checked')
     };
 
     Meteor.call('post', post, function(error, id){
