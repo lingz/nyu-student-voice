@@ -52,6 +52,7 @@ Meteor.methods({
       {
         userId: userId,
         author: author,
+        realId: user._id,
         submitted: new Date().getTime(),
         commentsCount: 0,
         resolved: false,

@@ -1,7 +1,7 @@
 <template name="userItem">
   <div class="post">
     <div class="post-content">
-      {{username}} - <span style="color:blue;">{{profile.type}}</span>
+      {{services.googleApps.name}} - <span style="color:blue;">{{profile.type}}</span>
     </div>
     {{#if admin}}
       <a id="changeUser" class="btn btn-warning pull-right" href="#" data-userid="{{_id}}" data-newtype="user">Demote</a>

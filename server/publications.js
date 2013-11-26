@@ -1,21 +1,21 @@
 Meteor.publish('newPosts', function(limit) {
-  return Posts.find({sort: {submitted: -1}, limit: limit}, {subscribers: -1});
+  return Posts.find({sort: {submitted: -1}, limit: limit, fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('singlePost', function(id) {
-  return id && Posts.find(id, {subscribers: -1});
+  return id && Posts.find(id, {fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('bestPosts', function(limit) {
-  return Posts.find({resolved: false}, {sort: {votes: -1, submitted: -1}, limit: limit}, {subscribers: -1});
+  return Posts.find({resolved: false}, {sort: {votes: -1, submitted: -1}, limit: limit, fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('resolvedPosts', function(limit) {
-  return Posts.find({resolved: true}, {sort: {submitted: -1}, limit: limit}, {subscribers: -1});
+  return Posts.find({resolved: true}, {sort: {submitted: -1}, limit: limit, fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('comments', function(postId) {
-  return Comments.find({postId: postId});
+  return Comments.find({postId: postId}, {fields: {realId: 0}});
 });
 
 Meteor.publish('notifications', function(){
