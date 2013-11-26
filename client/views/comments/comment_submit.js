@@ -3,9 +3,11 @@ Template.commentSubmit.events({
     e.preventDefault();
 
     var $body = $(e.target).find('[name=body]');
+    var $anon = $(e.target).find('.anonymous-check');
     var comment = {
       body: $body.val(),
-      postId: template.data._id
+      postId: template.data._id,
+      anonynmous: $anon.hasClass("checked")
     };
 
     Meteor.call('comment', comment, function(error, commentId) {
@@ -17,5 +19,9 @@ Template.commentSubmit.events({
       }
     });
     
+  },
+  "click .anonymous-check": function(e) {
+    $anon = $(e.target);
+    $anon.toggleClass("checked");
   }
 });

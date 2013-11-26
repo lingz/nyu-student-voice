@@ -14,7 +14,9 @@
     {{/each}}
     {{#if postsReady}}
         {{#unless allPostsLoaded}}
+        <div class="load-more-container">
           <a class="load-more" href="#">Load more</a>
+        </div>
         {{/unless}}
     {{else}}
     <div>{{> spinner}}</div> 

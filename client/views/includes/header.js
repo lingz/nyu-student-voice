@@ -21,6 +21,7 @@ Template.header.events({
     window.location = "https://accounts.google.com/logout";
   }
 });
+
 Template.header.rendered = function() {
   YUI({
       classNamePrefix: 'pure'
@@ -38,7 +39,7 @@ Template.header.rendered = function() {
       horizontalMenu.show();
 
   });
-}
+};
 
 
   

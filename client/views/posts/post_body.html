@@ -9,8 +9,11 @@
 <template name="postBody">
   <div class="post-content">
     <div class="post">
-      <h3 id="{{titleColor title}}"> {{title}} </h3>
-      <p> {{body}}</p>
+      <div class="whiteblur post-background"></div>
+        <div class="post-content-box">
+          <h3 id="{{titleColor title}}" class="post-content-title"> {{title}} </h3>
+          <p> {{body}}</p>
+        </div>
     </div>
   </div>
 </template>

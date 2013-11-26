@@ -1,16 +1,16 @@
 Meteor.publish('newPosts', function(limit) {
-  return Posts.find({sort: {submitted: -1}, limit: limit});
+  return Posts.find({sort: {submitted: -1}, limit: limit}, {subscribers: -1});
 });
 Meteor.publish('singlePost', function(id) {
-  return id && Posts.find(id);
+  return id && Posts.find(id, {subscribers: -1});
 });
 
 Meteor.publish('bestPosts', function(limit) {
-  return Posts.find({resolved: false}, {sort: {votes: -1, submitted: -1}, limit: limit});
+  return Posts.find({resolved: false}, {sort: {votes: -1, submitted: -1}, limit: limit}, {subscribers: -1});
 });
 
 Meteor.publish('resolvedPosts', function(limit) {
-  return Posts.find({resolved: true}, {sort: {submitted: -1}, limit: limit});
+  return Posts.find({resolved: true}, {sort: {submitted: -1}, limit: limit}, {subscribers: -1});
 });
 
 Meteor.publish('comments', function(postId) {
