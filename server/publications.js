@@ -1,20 +1,21 @@
 Meteor.publish('newPosts', function(limit) {
-  return Posts.find({sort: {submitted: -1}, limit: limit});
+  return Posts.find({sort: {submitted: -1}, limit: limit, fields: {subscribers: 0, realId: 0}});
 });
+
 Meteor.publish('singlePost', function(id) {
-  return id && Posts.find(id);
+  return id && Posts.find(id, {fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('bestPosts', function(limit) {
-  return Posts.find({resolved: false}, {sort: {votes: -1, submitted: -1}, limit: limit});
+  return Posts.find({resolved: false}, {sort: {votes: -1, submitted: -1}, limit: limit, fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('resolvedPosts', function(limit) {
-  return Posts.find({resolved: true}, {sort: {submitted: -1}, limit: limit});
+  return Posts.find({resolved: true}, {sort: {submitted: -1}, limit: limit, fields: {subscribers: 0, realId: 0}});
 });
 
 Meteor.publish('comments', function(postId) {
-  return Comments.find({postId: postId});
+  return Comments.find({postId: postId}, {fields: {realId: 0}});
 });
 
 Meteor.publish('notifications', function(){
@@ -24,6 +25,6 @@ Meteor.publish('notifications', function(){
 Meteor.publish(('users'), function() {
   user = Meteor.users.findOne(this.userId);
   if (user.profile.type == "admin") {
-    return Meteor.users.find({}, {fields: {"username": 1, "profile.type": 1}});
+    return Meteor.users.find({}, {fields: {"username": 1, "profile.type": 1, "services": 1}});
   }
 });

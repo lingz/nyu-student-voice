@@ -38,13 +38,21 @@ Meteor.methods({
       throw new Meteor.Error(422, "Please fill in an issue title");
     }
 
+    if (!postAttributes.anonymous) {
+      userId = user._id;
+      author = user.services.googleApps.name;
+    } else {
+      userId = "anon";
+      author = "Anonymous";
+    }
 
     
     // whitelisted keys
     var post = _.extend(_.pick(postAttributes,'title', 'message'),
       {
-        userId: user._id,
-        author: user.username,
+        userId: userId,
+        author: author,
+        realId: user._id,
         submitted: new Date().getTime(),
         commentsCount: 0,
         resolved: false,

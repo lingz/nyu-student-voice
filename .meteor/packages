@@ -5,9 +5,11 @@
 
 preserve-inputs
 router
-accounts-ui-bootstrap-dropdown
 accounts-password
-insecure
 spin
 paginated-subscription
 stylus
+standard-app-packages
+accounts-googleapps-meteor
+errors
+googleapps-meteor

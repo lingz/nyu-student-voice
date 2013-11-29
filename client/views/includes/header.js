@@ -15,6 +15,13 @@ Template.header.helpers({
   }
 });
 
+Template.header.events({
+  "click .logout": function(e) {
+    Meteor.logout();
+    window.location = "https://accounts.google.com/logout";
+  }
+});
+
 Template.header.rendered = function() {
   YUI({
       classNamePrefix: 'pure'
@@ -32,7 +39,7 @@ Template.header.rendered = function() {
       horizontalMenu.show();
 
   });
-}
+};
 
 
   

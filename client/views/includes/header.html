@@ -15,35 +15,32 @@
 
         <li> 
           <a href="#"> Filter </a>
-          <ul>
-            <li class="{{activeRouteClass  'home' 'bestPosts'}}">
-              <a href="#">Hottest Issues</a>
-            </li>
-            <li class="{{activeRouteClass 'newPosts'}}">
-              <a href="{{newPostsPath}}">All Issues</a>
-            </li>
-            <li class="{{activeRouteClass 'resolvedPosts'}}">
-              <a href="{{resolvedPostsPath}}">Resolved Issues</a>
-            </li>
-          </ul>
         </li>
-
-        <li>
-        <a href="#" class="user-dropdown"> User </a>
-          <ul>
+        <li class="{{activeRouteClass  'home' 'bestPosts'}}">
+          <a href="#">Hottest Issues</a>
+        </li>
+        <li class="{{activeRouteClass 'newPosts'}}">
+          <a href="{{newPostsPath}}">All Issues</a>
+        </li>
+        <li class="{{activeRouteClass 'resolvedPosts'}}">
+          <a href="{{resolvedPostsPath}}">Resolved Issues</a>
+        </li>
+        <li> 
+          <a href="#"> User </a>
+        </li>
           {{#if isAdmin}}
             <li>
               <a href="{{userListPath}}">Manage Users</a>
             </li>
-          </ul>
-        </li>
-
-        <li>
           {{/if}}
           {{#if currentUser}}
-          <a href="{{postSubmitPath}}">Submit Issue</a>
-        </li>
+            <li>
+              <a href="{{postSubmitPath}}">Submit Issue</a>
+            </li>
           {{/if}} 
+        <li>
+          <a href="/logout" class="logout">Logout</a>
+        </li>
       </ul>
     </div>
   </header>

@@ -3,9 +3,13 @@ Template.commentSubmit.events({
     e.preventDefault();
 
     var $body = $(e.target).find('[name=body]');
+    var $anon = $(e.target).find('[name=anon]');
+    console.log($anon);
+    console.log($anon.is(':checked'));
     var comment = {
       body: $body.val(),
-      postId: template.data._id
+      postId: template.data._id,
+      anonymous: $anon.is(':checked')
     };
 
     Meteor.call('comment', comment, function(error, commentId) {
@@ -17,5 +21,5 @@ Template.commentSubmit.events({
       }
     });
     
-  }
+  },
 });

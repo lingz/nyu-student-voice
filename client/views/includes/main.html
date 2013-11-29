@@ -1,0 +1,28 @@
+<template name="main">
+  {{#if loggedIn}}
+    {{> header}}
+    {{> meteorErrors}}
+    <div id="main" class="row-fluid">
+      {{renderPage}}
+    </div>
+  {{else}}
+    <div class="row">
+      <div class="splash col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
+        <div class="profileblur"></div>
+        <p>
+          Welcome to NYUVoice.
+        </p>
+        <p>
+        <a href="/about">NYUVoice</a> is a social platform for discussion of how we can improve 
+        the global NYU Community. It is a forum for topics ranging from those affecting
+        specific schools, to the entire GNU. We only ask that discussion be constructive
+        and respectful throughout. NYUVoice is moderated by the NYU Student Senator's Council.
+        </p>
+        <p>
+          Login to join the discussion!
+        </p>
+        <button type="button" class="account" id="login" href="#">Login with NYU</button><br/>
+      </div>
+    </div>
+  {{/if}}
+</template>

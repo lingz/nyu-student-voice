@@ -16,7 +16,11 @@ Meteor.Router.add({
     to: 'postResolve',
     and: function(id) { Session.set('currentPostId', id);}
   },
-  '/submit': 'postSubmit'
+  '/submit': 'postSubmit',
+  "/logout": function() {
+    Meteor.logout();
+    window.location = "https://accounts.google.com/logout";
+  }
 });
 
 Meteor.Router.filters({

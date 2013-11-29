@@ -18,7 +18,10 @@ Template.notification.helpers({
     }
   },
   postTitle: function() {
+    console.log(this.postId);
+    console.log(Posts.find().fetch());
     post = Posts.findOne(this.postId);
+    console.log(post);
     return post.title;
   },
   isComment: function() {

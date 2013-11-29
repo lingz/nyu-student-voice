@@ -4,7 +4,8 @@ Template.postSubmit.events({
 
     var post = {
       title: $(event.target).find('[name=title]').val(),
-      message: $(event.target).find('[name=message]').val()
+      message: $(event.target).find('[name=message]').val(),
+      anonymous: $(event.target).find('[name=anon]').is(':checked')
     };
 
     Meteor.call('post', post, function(error, id){
@@ -18,6 +19,10 @@ Template.postSubmit.events({
         Meteor.Router.to('postPage', id);
       }
     });
+  },
+  "click .anonymous-check": function(e) {
+    $anon = $(e.target);
+    $anon.toggleClass("checked");
   }
 });
 
