@@ -11,6 +11,29 @@ $grey = #c2c2c2
 
 html, body, .container, .main
     width:100%
+    height:100%
+
+nav ul 
+    position:absolute
+    right:15px
+    ul
+        display:none
+        li
+            float: none;
+            text-align: center;
+            margin-bottom: 10px;
+    li
+        float:left
+        margin-left:20px
+        a
+            text-decoration:none
+            color:white
+    :hover > ul
+        display:block
+        float:auto
+        color:white
+        text-decoration:none
+
 #main
     padding-top:50px
 
@@ -23,7 +46,7 @@ html, body, .container, .main
 
 
 .upvote-container
-    width:100px
+    width:120px
     height:50px
     padding: 12px 5px 5px 5px
     float:left
@@ -32,8 +55,12 @@ html, body, .container, .main
     border: solid #fff 2px
     position:relative
     a
-        text-decoration:none
-        color:white
+        text-decoration: none
+        color: #fff
+        position: relative
+        left: 50%
+        top: 9%
+        margin-left: -41px
 
 .pure-menu.pure-menu-open, .pure-menu.pure-menu-horizontal li  .pure-menu-children
     background: transparent
@@ -57,8 +84,10 @@ html, body, .container, .main
 .post 
     height:150px
     margin-bottom:10px
-    width: calc(unquote("100% - 20px"))
-    margin-left:10px
+    width: calc(unquote("100% - 50px"))
+    max-width:1100px
+    margin-left:auto
+    margin-right:auto
     *zoom: 1;
     -webkit-transition: all 300ms 0ms;
     -webkit-transition-delay: ease-in;
@@ -67,6 +96,16 @@ html, body, .container, .main
     transition: all 300ms 0ms ease-in;
     position: relative;
     opacity: 1;
+    button
+        background: transparent
+        outline: none
+        border: 1px solid white
+        color: white
+        height: 50px
+        width: 150px
+        position: absolute
+        right: 15px
+        bottom: 10px
     .post-background
         position:absolute
         width:100%
@@ -79,26 +118,41 @@ html, body, .container, .main
         width:250px
         margin-left: 25px
         margin-top: 5px
-    .post-content-box
-        position:relative
-        padding: 0px 25px
-        .post-content-title
-            color:grey
-            font-size:2em
-    .post-container-wrapper
         .post-content-container
             .post-content
-                h3
+                padding:15px
+                width:900px
+                .post-title
                     text-decoration:none
                     color:white
-                    a
-                        text-decoration:none
-                        color:white
+                    font-size:1.2em
                 p
                     color:grey
                     font-size: 0.8em
-                    a
-                        color:grey
+                .post-comment
+                    text-decoration:none
+                    color:grey
+    .post-body-detail
+        position: absolute
+        padding:15px 0px 0px 15px
+        h3
+            color:grey
+            margin-bottom: 0px
+        p
+            color:white
+   .comment-form
+        padding: 5px 15px
+        position:absolute
+        .control-group
+            .controls
+                h4
+                    color:grey
+                    font-size:1.17em
+                textarea
+                    background:transparent
+                    outline:none
+                    border:none
+                    color:white
 
 .load-more-container
     width:200px
@@ -113,26 +167,49 @@ html, body, .container, .main
         font-size:1.17em
         text-decoration:none
 
-@media screen and (min-width: 480px)
-    .post 
-        width: calc(unquote("100% - 50px"))
+@media screen and (max-width: 980px)
+    .post
         margin-left:25px
+        .post-content-wrapper
+            .post-content-container
+                .post-content
+                    width:600px
 
-@media screen and (min-width: 768px)
-    .post
-        width: calc(unquote("100% - 70px"))
-        margin-left:35px
-        .post-content-wrapper
-            width: 500px
-@media screen and (min-width: 980px)
+@media screen and (max-width: 768px)
     .post
         .post-content-wrapper
-            width:600px
-@media screen and (min-width: 1200px)
-    .post 
-        max-width:1100px
-        margin-left:auto
-        margin-right:auto
+            .post-content-container
+                .post-content
+                    width: 500px
+                    padding:25px
+
+
+@media screen and (max-width: 480px)
+    nav
+        ul
+            li
+                margin-left:10px
+        li
+            a
+                font-size:0.8em
+    .post
+        .upvote-container
+            width:80px
+            a
+                font-size:0.8em
+                left:59%
         .post-content-wrapper
-            width: 900px
+            position: absolute
+            width: 200px
+            top: 50%
+            margin-top: -40px
+            left: 30%
+            font-size:0.8em
+            .post-content-container
+                .post-content
+                    width:200px
+                    padding:0px
+
+
+
 

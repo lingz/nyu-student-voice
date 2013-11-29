@@ -11,10 +11,10 @@
     <div class="post-content-wrapper">
       <div class="post-content-container">
         <div class="post-content">
-          <h3><a href="{{postPagePath this}}">{{title}}</a></h3>
+          <a class="post-title" href="{{postPagePath this}}">{{title}}</a>
           <p>
             submitted by {{author}},<br>
-            <a href="{{postPagePath this}}">{{commentsCount}} comments </a>
+            <a class="post-comment" href="{{postPagePath this}}">{{commentsCount}} comments </a>
             {{#if ownPost}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
           </p>
         </div>
