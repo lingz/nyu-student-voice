@@ -1,12 +1,15 @@
 newPostsHandle = Meteor.subscribeWithPagination('newPosts', 10);
-bestPostsHandle = Meteor.subscribeWithPagination('bestPosts', 10);
+topPostsHandle = Meteor.subscribeWithPagination('topPosts', 10);
 resolvedPostsHandle = Meteor.subscribeWithPagination('resolvedPosts', 10);
+Meteor.subscribe("ownPosts");
 
 Meteor.subscribe('notifications');
+Meteor.subscribe('tags');
 Deps.autorun(function() {
   Meteor.subscribe('comments', Session.get('currentPostId'));
   Meteor.subscribe('singlePost', Session.get('currentPostId'));
 });
+Session.set("tags", []);
 
 
 Deps.autorun(function() {

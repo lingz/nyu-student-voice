@@ -1,7 +1,7 @@
 <template name="newPosts">
   {{> postsList options}}
 </template>
-<template name="bestPosts">
+<template name="topPosts">
   {{> postsList options}}
 </template>
 <template name="resolvedPosts">
@@ -9,6 +9,9 @@
 </template>
 <template name="postsList">
   <div class="posts">
+    {{#if filtering}}
+      Showing posts with tags: {{tagsList}}
+    {{/if}}
     {{#each postsWithRank}}
       {{> postItem}}
     {{/each}}

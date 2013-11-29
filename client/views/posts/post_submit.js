@@ -5,20 +5,34 @@ Template.postSubmit.events({
     var post = {
       title: $(event.target).find('[name=title]').val(),
       message: $(event.target).find('[name=message]').val(),
-      anonymous: $(event.target).find('[name=anon]').is(':checked')
+      tags: $(event.target).find('[name=tags]:checked').map(function() {return this.value;}).toArray()
     };
 
-    Meteor.call('post', post, function(error, id){
-      if (error){
-        Meteor.Errors.throwError(error.reason);
+    if (this == window) {
+      var anonymous = $(event.target).find('[name=anon]').is(':checked');
+      post.anonymous = anonymous;
 
-        if (error.error === 302) {
-          Meteor.Router.to('postPage', error.details);
+      Meteor.call('post', post, function(error, id){
+        if (error){
+          Meteor.Errors.throwError(error.reason);
+
+          if (error.error === 302) {
+            Meteor.Router.to('postPage', error.details);
+          }
+        } else {
+          Meteor.Router.to('postPage', id);
         }
-      } else {
-        Meteor.Router.to('postPage', id);
-      }
-    });
+      });
+    } else {
+      var currentPostId = this._id;
+      Posts.update(this._id, {$set: post}, function(error) {
+        if (error) {
+          Meteor.Errors.throwError(error.reason);
+        } else {
+          Meteor.Router.to('postPage', currentPostId);
+        }
+      });
+    }
   },
   "click .anonymous-check": function(e) {
     $anon = $(e.target);
@@ -26,3 +40,14 @@ Template.postSubmit.events({
   }
 });
 
+Template.postSubmit.helpers({
+  "tags": function() {
+    return Tags.find();
+  },
+  "notEditing": function() {
+    return this == window;
+  },
+  "tagExists": function(parentScope) {
+    return _.contains(parentScope.tags, this.name) ? "checked" : "";
+  }
+});

@@ -3,20 +3,35 @@
     <div class="form-contents">
     <div class="control-group">
       <div class="controls">
-        <h1>Submit an Issue</h1>
+        {{#if notEditing}}
+          <h1>Submit an Issue</h1>
+        {{else}}
+          <h1>Edit an Issue</h1>
+        {{/if}}
       </div>
     </div>
       <div class="control-group">
         <label class="control-label" for="title">Title</label>
-        <div class="controls"><input class="block-level" type="text" name="title" value="" placeholder="Name Your Issue" /></div>
+        <div class="controls"><input class="block-level" type="text" name="title" value="{{title}}" placeholder="Name Your Issue" /></div>
       </div>
       <div class="control-group">
         <label class="control-label" for="message">Details</label>
-        <div class="controls"><textarea class="block-level" id="" name="message" rows="10" type="text" value=""></textarea></div>
+        <div class="controls"><textarea class="block-level" id="" name="message" rows="10" type="text">{{message}}</textarea></div>
       </div>
+        <div class="control-group">
+          {{#if notEditing}}
+            <input type="checkbox" name="anon" class="anon" id="anon"><label for="anon">Post Anonymously</label>
+            <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Submit" /></div>
+          {{else}}
+            <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Edit Issue" /></div>
+          {{/if}}
+        </div>
       <div class="control-group">
-        <input type="checkbox" name="anon" class="anon" id="anon"><label for="anon">Post Anonymously</label>
-        <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Submit" /></div>
+        Tags<br/>
+        {{#each tags}}
+          <input id="{{_id}}" type="checkbox" name="tags" value="{{name}}" {{tagExists ../this}}>
+          <label for={{_id}} class="filter">{{name}}</label>
+        {{/each}}
       </div>
     </div>
   </form>

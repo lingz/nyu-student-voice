@@ -1,9 +1,6 @@
 <template name="header">
-  <div id="demo-horizontal-menu">
-      <ul id="std-menu-items">
-         <li>
-          <a href="#"> Submit Issue </a>
-        </li>
+  <div class="pure-menu pure-menu-horizontal pure-menu-open">
+      <ul>
         <li> 
           <a href="#"> Notifications </a>
           <ul>
@@ -14,30 +11,40 @@
         </li>
 
         <li> 
-          <a href="#"> Filter </a>
+          Filter
+          <ul>
+            {{#each tags}}
+            <li><a class="tag">{{{isActiveTag name}}}</a></li>
+            {{/each}}
+          </ul>
         </li>
-        <li class="{{activeRouteClass  'home' 'bestPosts'}}">
-          <a href="#">Hottest Issues</a>
+        <li class="{{activeRouteClass  'home' 'topPosts'}}">
+        <a href="{{topPostsPath}}">Top Issues</a>
         </li>
         <li class="{{activeRouteClass 'newPosts'}}">
-          <a href="{{newPostsPath}}">All Issues</a>
+          <a href="{{newPostsPath}}">New Issues</a>
         </li>
         <li class="{{activeRouteClass 'resolvedPosts'}}">
           <a href="{{resolvedPostsPath}}">Resolved Issues</a>
         </li>
-        <li> 
-          <a href="#"> User </a>
-        </li>
-          {{#if isAdmin}}
+        {{#if isAdmin}}
+        <li>
+          Admin Actions
+          <ul>
+            <li>
+              <a href="{{tagsAdminListPath}}">Manage Tags</a>
+            </li>
             <li>
               <a href="{{userListPath}}">Manage Users</a>
             </li>
-          {{/if}}
-          {{#if currentUser}}
-            <li>
-              <a href="{{postSubmitPath}}">Submit Issue</a>
-            </li>
-          {{/if}} 
+          </ul>
+        </li>
+        {{/if}}
+        {{#if currentUser}}
+          <li>
+            <a href="{{postSubmitPath}}">Submit Issue</a>
+          </li>
+        {{/if}} 
         <li>
           <a href="/logout" class="logout">Logout</a>
         </li>

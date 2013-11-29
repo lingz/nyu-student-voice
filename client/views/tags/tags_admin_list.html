@@ -1,0 +1,14 @@
+<template name="tagsAdminList">
+  <ul>
+    {{#each tags}}
+      {{> tagsAdminItem}}
+    {{/each}}
+    <li>
+      Create New Tag
+      <form action="POST" id="new-tag">
+        <input type="text" id="new-tag-input" placeholder="New Tag Name">
+        <input type="submit" id="new-tag-submit" value="submit">
+      </form>
+    </li>
+  </ul>
+</template>

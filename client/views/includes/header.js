@@ -1,6 +1,5 @@
 Template.header.helpers({
   activeRouteClass: function(/* route names */) {
-
     var args = Array.prototype.slice.call(arguments, 0);
     args.pop();    
 
@@ -12,34 +11,28 @@ Template.header.helpers({
   },
   isAdmin: function() {
     return Session.get("admin");
+  },
+  tags: function() {
+    return Tags.find();
+  },
+  isActiveTag: function(tagName) {
+    if (_.contains(Session.get("tags"), tagName)) {
+      return "&#8226; " + tagName;
+    } else {
+      return tagName;
+    }
+    
   }
 });
 
 Template.header.events({
-  "click .logout": function(e) {
-    Meteor.logout();
-    window.location = "https://accounts.google.com/logout";
+  "click .tag": function(e) {
+    var currentTags = Session.get("tags");
+    if (_.contains(currentTags, this.name)) {
+      Session.set("tags", _.without(currentTags, this.name));
+    } else {
+      Session.set("tags", _.union(currentTags, [this.name]));
+    }
   }
 });
 
-Template.header.rendered = function() {
-  YUI({
-      classNamePrefix: 'pure'
-  }).use('gallery-sm-menu', function (Y) {
-
-      var horizontalMenu = new Y.Menu({
-          container         : '#demo-horizontal-menu',
-          sourceNode        : '#std-menu-items',
-          orientation       : 'horizontal',
-          hideOnOutsideClick: false,
-          hideOnClick       : false
-      });
-
-      horizontalMenu.render();
-      horizontalMenu.show();
-
-  });
-};
-
-
-  

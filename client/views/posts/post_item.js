@@ -4,9 +4,6 @@ Template.postItem.helpers({
     a.href = this.url;
     return a.hostname;
   },
-  ownPost: function() {
-    return this.userId == Meteor.userId();
-  },
   upvotedClass: function() {
     var userId = Meteor.userId();
     if (userId && ! _.include(this.upvoters, userId)) {
@@ -23,6 +20,9 @@ Template.postItem.helpers({
   canResolve: function() {
     return !(this.resolved);
   },
+  canEdit: function() {
+    return this.realId !== undefined;
+  },
   resolvedStatus: function() {
     if (this.resolved) {
       return true;
@@ -36,6 +36,9 @@ Template.postItem.helpers({
     } else {
       return "btn-warning";
     }
+  },
+  hasPostTags: function() {
+    return (this.tags !== undefined && this.tags.length > 0);
   }
 });
 

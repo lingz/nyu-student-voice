@@ -5,9 +5,7 @@ function isDevEnv() {
     return false;
   }
 }
-if (Posts.find().count() === 0 && isDevEnv()) {
-  var now = Date();
-  
+if (Meteor.users.find().count() === 0) {
   var id = Accounts.createUser({
     username: "admin",
     email: "lz781@nyu.edu",
@@ -16,8 +14,9 @@ if (Posts.find().count() === 0 && isDevEnv()) {
 
 	var admin = Meteor.users.findOne(id);
 	Meteor.users.update(id, {$set: {"profile.type": "admin"}});
-	
-
+}
+if (Posts.find().count() === 0 && isDevEnv()) {
+  var now = Date();
 
   // seed the db with samples
   for (var i = 0; i < 10; i++) {

@@ -12,15 +12,14 @@ Posts.allow({
 
 Posts.deny({
   update: function(userId, post, fieldNames) {
-    console.log(fieldNames);
     if (isAdmin === false) {
-      // may only edit the following fields:
-      return (_.without(fieldNames, 'title', 'message', 'subscribers').length > 0);
+      // ordinary users may only edit the following fields:
+      return (_.without(fieldNames, 'title', 'message', 'subscribers', 'tags').length > 0);
     } else if (ownsDocument) {
       // if they are an admin editing their own post - they may also resolve it
-      return (_.without(fieldNames, 'title', 'message', 'resolved', 'resolution', 'subscribers').length > 0);
+      return (_.without(fieldNames, 'title', 'message', 'resolved', 'resolution', 'subscribers', 'tags').length > 0);
     }  else {
-      // otherwise they can only resolve posts
+      // they are an admin editing someone else's post, they can only resolve posts
       return (_.without(fieldNames, 'resolved', 'resolution', 'subscribers').length > 0);
     }
   }
@@ -48,7 +47,7 @@ Meteor.methods({
 
     
     // whitelisted keys
-    var post = _.extend(_.pick(postAttributes,'title', 'message'),
+    var post = _.extend(_.pick(postAttributes,'title', 'message', 'tags'),
       {
         userId: userId,
         author: author,

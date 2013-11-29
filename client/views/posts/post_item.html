@@ -15,7 +15,7 @@
           <p>
             submitted by {{author}},<br>
             <a class="post-comment" href="{{postPagePath this}}">{{commentsCount}} comments </a>
-            {{#if ownPost}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
+            {{#if canEdit}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
           </p>
         </div>
       </div>
@@ -30,5 +30,14 @@
         {{/if}}
       </div>
     </div>
+    {{#if hasPostTags}}
+      <ul class="post-tags">
+        {{#each tags}}
+          <li>
+            {{this}}
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
   </div>
 </template>
