@@ -107,7 +107,7 @@ $(function () {
       var pin = $(event.target);
       pin.addClass("hovered");
       temp = pin.html();
-      pin.html("Remove Vote");
+      pin.html("Un-Vote");
       pin.addClass("btn-danger");
       pin.removeClass("btn-success");
       // bind a listener to see if you've moved out (b/c mouseleave doesn't work properly)
