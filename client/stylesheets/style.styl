@@ -86,6 +86,8 @@ body
 .post 
     height:150px
     margin-bottom:10px
+    width: -webkit-calc(unquote("100% - 50px"))
+    width: -moz-calc(unquote("100% - 50px"))
     width: calc(unquote("100% - 50px"))
     max-width:1100px
     margin-left:auto
@@ -171,6 +173,8 @@ body
 
 /*Sumbit an Issue*/
 .form-contents
+    width: -webkit-calc(unquote("100% - 50px"))
+    width: -moz-calc(unquote("100% - 50px"))
     width: calc(unquote("100% - 50px"))
     margin-left: auto
     margin-right: auto
@@ -201,9 +205,15 @@ body
                 display: block
                 color: grey
                 margin-bottom: 3px
+            /*Textbox*/
             .block-level
                 width: 100%
                 padding: 5px 15px
+                -moz-padding-end: 5px 15px;
+                -moz-padding-start: 5px 15px;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
                 background:transparent
                 outline:1px
                 border: 1px solid white
@@ -223,7 +233,7 @@ body
                 -webkit-appearance: none
                 background-color: transparent-white
                 box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05)
-                padding: 8px
+                padding: 7px
                 display: inline-block
                 position: relative
             .checkbox, .checkbox:checked:active
@@ -235,11 +245,13 @@ body
                 color: #99a1a7
             .checkbox:checked:after
                 content: '\2715'
-                font-size: 14px
+                font-size: 12px
                 position: absolute
                 top: 0px
                 left: 3px
                 color: #FFF
+            #select-tag
+                width: -webkit-calc(unquote("100% - 170px"))
 
 
 @media screen and (max-width: 980px)

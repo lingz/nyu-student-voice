@@ -23,13 +23,13 @@
           </div>
             <div class="control-group" id="right-adjusted">
               {{#if notEditing}}
-                <input type="checkbox" name="anon" class="anon" id="anon"><label for="anon">Post Anonymously</label>
+                <input type="checkbox" name="anon" class="checkbox" id="anon"><label for="anon">Post Anonymously</label>
                 <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Submit" /></div>
               {{else}}
                 <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Edit Issue" /></div>
               {{/if}}
             </div>
-          <div class="control-group">
+          <div class="control-group" id="select-tag">
             Tags<br/>
             {{#each tags}}
               <input class="checkbox" id="{{_id}}" type="checkbox" name="tags" value="{{name}}" {{tagExists ../this}}>
