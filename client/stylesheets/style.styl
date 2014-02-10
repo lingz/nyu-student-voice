@@ -5,7 +5,7 @@ $desktop = 1200px
 
 /*old color c2c2c2*/
 grey = #A8A5A5
-transparent-white = rgba(255,255,255,0.3)
+transparent-white = rgba(255,255,255,0.2)
 * 
     box-sizing: border-box
     -webkit-box-sizing: border-box
@@ -46,6 +46,27 @@ body
     background-size: cover
     background-attachment: fixed
 
+/*login page*/
+.splash
+    background:transparent-white
+    margin:auto
+    position:absolute
+    top:0;right:0;bottom:0;left:0;
+    height:40%
+    max-width:560px
+    width:100%
+    text-align:center
+    color:#fff
+    a
+        text-decoration:none
+        color:#fff
+    p
+        padding: 0px 5% 0px 5%
+
+#login-title
+    font-size:2.5em
+    font-family:"Lato", sans-serif
+    font-weight:400
 
 .upvote-container
     width:120px
@@ -295,7 +316,10 @@ body
                 .post-content
                     width:200px
                     padding:0px
-
-
-
-
+    .splash
+        height:55%
+        #login-title
+            margin-bottom:auto
+            font-size:1.8em
+        p
+            font-size:0.7em
