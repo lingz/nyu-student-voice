@@ -1,2 +1,2 @@
-process.env.googleId = "";
-process.env.googleSecret = "";
+process.env.googleId = "870666469170.apps.googleusercontent.com";
+process.env.googleSecret = "WQ2JDyUWRns9ysEKsxjwpjAH";
