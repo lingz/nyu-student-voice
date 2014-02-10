@@ -3,7 +3,8 @@ $tablet = 768px
 $default = 980px
 $desktop = 1200px
 
-$grey = #c2c2c2
+/*old color c2c2c2*/
+grey = #A8A5A5
 transparent-white = rgba(255,255,255,0.2)
 * 
     box-sizing: border-box
@@ -82,6 +83,7 @@ body
         color: #fff
 
 
+
 .pure-menu.pure-menu-open, .pure-menu.pure-menu-horizontal li  .pure-menu-children
     background: transparent
     border:none
@@ -105,6 +107,8 @@ body
 .post 
     height:150px
     margin-bottom:10px
+    width: -webkit-calc(unquote("100% - 50px"))
+    width: -moz-calc(unquote("100% - 50px"))
     width: calc(unquote("100% - 50px"))
     max-width:1100px
     margin-left:auto
@@ -181,12 +185,95 @@ body
     border: solid white 1px
     margin-left:auto
     margin-right:auto
-    background:rgba(255,255,255,0.3)
+    background: transparent-white
     padding: 12px 0px 0px 42px
     a
         color:white
         font-size:1.17em
         text-decoration:none
+
+/*Sumbit an Issue*/
+.form-contents
+    width: -webkit-calc(unquote("100% - 50px"))
+    width: -moz-calc(unquote("100% - 50px"))
+    width: calc(unquote("100% - 50px"))
+    margin-left: auto
+    margin-right: auto
+    max-width:1100px
+    h3
+        color: white
+        size: 1.17em
+        margin: 0
+        font-weight: 400
+    .inner-forms
+        margin: 5px 0px 0px 0px
+        position: relative
+        .submit-background
+            position: absolute
+            background: white
+            opacity: 0.3
+            height: 100%
+            width: 100%
+        .submit-foreground
+            padding: 15px
+            .control-group
+                margin-bottom: 8px
+                position: relative
+                color: white
+            #right-adjusted
+                float: right
+            .control-label
+                display: block
+                color: grey
+                margin-bottom: 3px
+            /*Textbox*/
+            .block-level
+                width: 100%
+                padding: 5px 15px
+                -moz-padding-end: 5px 15px;
+                -moz-padding-start: 5px 15px;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                background:transparent
+                outline:1px
+                border: 1px solid white
+                color:white
+            .btn
+                width:150px
+                height:40px
+                border: none
+                position:relative
+                text-align: center
+                line-height: 40px
+                background: rgba(255, 255, 255, .3)
+                font-size: 1.5em
+                text-decoration: none
+                color: white
+            .checkbox
+                -webkit-appearance: none
+                background-color: transparent-white
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05)
+                padding: 7px
+                display: inline-block
+                position: relative
+            .checkbox, .checkbox:checked:active
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1)
+            .checkbox: checked
+                background-color: #e9ecee
+                border: 1px solid #adb8c0 
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px-12px rgba(255,255,255,0.1)
+                color: #99a1a7
+            .checkbox:checked:after
+                content: '\2715'
+                font-size: 12px
+                position: absolute
+                top: 0px
+                left: 3px
+                color: #FFF
+            #select-tag
+                width: -webkit-calc(unquote("100% - 170px"))
+
 
 @media screen and (max-width: 980px)
     .post

@@ -78,7 +78,7 @@ Template.postItem.rendered = function(){
   var instance = this;
   var rank = instance.data._rank;
   var $this = $(this.firstNode);
-  var postHeight = 80;
+  var postHeight = 150;
   var newPosition = rank * postHeight;
 
   // if element has a currentPosition (i.e. it's not the first ever render)
