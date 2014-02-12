@@ -9,7 +9,7 @@ transparent-white = rgba(255,255,255,0.2)
 * 
     box-sizing: border-box
     -webkit-box-sizing: border-box
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lato', sans-serif;
 
 html, body, .container, .main
     width:100%
@@ -207,6 +207,7 @@ body
         font-weight: 400
     .inner-forms
         margin: 5px 0px 0px 0px
+        padding-bottom: 10px;
         position: relative
         .submit-background
             position: absolute
@@ -220,8 +221,18 @@ body
                 margin-bottom: 8px
                 position: relative
                 color: white
-            #right-adjusted
+            #post-submit-container
                 float: right
+                label
+                    font-weight: 300
+                input[type="checkbox"], label
+                    float: right
+                input[type="checkbox"]
+                    margin-left: 5px
+                    margin-top: 2px
+                input[type="submit"]
+                    font-family: Lato
+                    font-weight: 300
             .control-label
                 display: block
                 color: grey
@@ -239,13 +250,15 @@ body
                 outline:1px
                 border: 1px solid white
                 color:white
+            .filter
+                font-weight: 300
             .btn
-                width:150px
+                margin-top: 3px
+                width:160px
                 height:40px
                 border: none
                 position:relative
                 text-align: center
-                line-height: 40px
                 background: rgba(255, 255, 255, .3)
                 font-size: 1.5em
                 text-decoration: none
@@ -271,8 +284,13 @@ body
                 top: 0px
                 left: 3px
                 color: #FFF
+            .tag-label-class
+                display: inline-block
+                margin-right: 5px
             #select-tag
                 width: -webkit-calc(unquote("100% - 170px"))
+
+
 
 
 @media screen and (max-width: 980px)
@@ -322,3 +340,20 @@ body
             font-size:1.8em
         p
             font-size:0.7em
+    .form-contents
+        .inner-forms
+            .submit-foreground
+                /*tags readjust to below submit button*/
+                #select-tag
+                    display: inline-block
+                    width: -webkit-calc(unquote("100% - 50px"))
+                    width: -moz-calc(unquote("100% - 50px"))
+                    width: calc(unquote("100% - 50px"))
+                .block-level
+                    padding: 2px 5px
+                    -moz-padding-end: 2px 5px;
+                    -moz-padding-start: 2px 5px;
+        #post-submit-container
+            width: 100%
+            input[type="submit"]
+                width: 100%

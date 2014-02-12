@@ -21,9 +21,9 @@
             <label class="control-label" for="message">Details</label>
             <div class="controls"><textarea class="block-level" id="" name="message" rows="10" type="text">{{message}}</textarea></div>
           </div>
-            <div class="control-group" id="right-adjusted">
+            <div class="control-group" id="post-submit-container">
               {{#if notEditing}}
-                <input type="checkbox" name="anon" class="checkbox" id="anon"><label for="anon">Post Anonymously</label>
+                <input type="checkbox" name="anon" class="checkbox"><label for="anon">Post Anonymously</label>
                 <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Submit" /></div>
               {{else}}
                 <div class="controls"><input class="btn btn-primary btn-block btn-large" type="submit" value="Edit Issue" /></div>
@@ -32,8 +32,10 @@
           <div class="control-group" id="select-tag">
             Tags<br/>
             {{#each tags}}
-              <input class="checkbox" id="{{_id}}" type="checkbox" name="tags" value="{{name}}" {{tagExists ../this}}>
-              <label for={{_id}} class="filter">{{name}}</label>
+              <div class="tag-label-class">
+                <input class="checkbox" id="{{_id}}" type="checkbox" name="tags" value="{{name}}" {{tagExists ../this}}>
+                <label for={{_id}} class="filter">{{name}}</label>
+              </div>
             {{/each}}
           </div>
         </div>
