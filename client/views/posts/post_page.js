@@ -4,6 +4,9 @@ Template.postPage.helpers({
   },
   comments: function() {
     return Comments.find();
+  },
+  hasComment: function() {
+  	return Comments.find().count() > 0;
   }
 });
 

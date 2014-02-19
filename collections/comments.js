@@ -36,5 +36,25 @@ Meteor.methods({
     comment._id =  Comments.insert(comment);
     Meteor.call('createCommentNotificiation', comment);
     return comment._id;
+  },
+  uncomment: function(commentId){
+    var comment = Comments.findOne(commentId);
+    var user = Meteor.user();
+    if (!comment || !user) 
+      throw new Meteor.Error(401, "Comment or user does not exist");
+    if (!(comment.realId == user._id || 
+      (user && user.profile.type == "admin")))
+      throw new Meteor.Error(401, 
+        "You don't have permission to delete this comment");
+    Comments.remove({
+      _id: comment._id
+    });
+    Posts.update({
+      _id: comment.postId
+    },{
+      "$inc": {
+        commentsCount: -1
+      }
+    });
   }
 });

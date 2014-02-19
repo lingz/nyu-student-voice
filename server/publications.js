@@ -18,6 +18,10 @@ Meteor.publish('comments', function(postId) {
   return Comments.find({postId: postId}, {fields: {realId: 0}});
 });
 
+Meteor.publish('ownComments', function(postId) {
+  return Comments.find({postId: postId, realId: this.userId});
+});
+
 Meteor.publish('notifications', function(){
   return Notifications.find({subscribers: this.userId, read: {$ne: this.userId}});
 });

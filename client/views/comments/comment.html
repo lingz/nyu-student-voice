@@ -1,9 +1,12 @@
 <template name="comment">
   <li>
+    <p>{{body}}</p>
     <h4>
       <span class="author">{{author}}</span>
       <span class="date">on {{submittedText}}</span>
     </h4>
-    <p>{{body}}</p>
+    {{#if canDelete}}
+    	<a class="delete" href="#">delete</a>
+    {{/if}}
   </li>
 </template>

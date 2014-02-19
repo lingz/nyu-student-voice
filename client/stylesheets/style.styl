@@ -74,7 +74,7 @@ body
     float:left
     margin-top:50px
     margin-left:25px
-    border: solid #fff 2px
+    border: solid #fff 1px
     position:relative
     text-align: center
     line-height: 50px
@@ -121,16 +121,6 @@ body
     transition: all 300ms 0ms ease-in;
     position: relative;
     opacity: 1;
-    button
-        background: transparent
-        outline: none
-        border: 1px solid white
-        color: white
-        height: 50px
-        width: 150px
-        position: absolute
-        right: 15px
-        bottom: 10px
     .post-background
         position:absolute
         width:100%
@@ -148,6 +138,7 @@ body
                     text-decoration:none
                     color:white
                     font-size:1.2em
+                    font-weight: 400
                 p
                     color:grey
                     font-size: 0.8em
@@ -157,26 +148,47 @@ body
                     float: right
                     margin-right: 100px
     .post-body-detail
-        position: absolute
-        padding:15px 0px 0px 15px
+        padding:20px 20px 20px 20px
         h3
             color:grey
             margin-bottom: 0px
         p
             color:white
+            margin-top: 5px
+            margin-bottom: 0px
+            font-weight: 300
+    ul
+        padding: 0px
+        list-style-type: none
+    h4
+        color:grey
+        font-size:1.17em
+        margin: 0px
    .comment-form
         padding: 5px 15px
-        position:absolute
         .control-group
             .controls
-                h4
-                    color:grey
-                    font-size:1.17em
                 textarea
+                    width: 100%
+                    padding: 5px 15px
+                    -moz-padding-end: 5px 15px;
+                    -moz-padding-start: 5px 15px;
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
                     background:transparent
-                    outline:none
-                    border:none
+                    outline:1px
+                    border: 1px solid white
                     color:white
+
+/*details page*/
+.auto-height-post
+    height: auto
+#details
+    margin-top: 0px
+#comment-label
+    color:grey
+    margin-top:0px
 
 .load-more-container
     width:200px
@@ -256,7 +268,7 @@ body
                 width: -webkit-calc(unquote("100% - 170px"))
 
 /*Submit Button Styling*/
-input[type="submit"]
+button[type="submit"]
     margin-top: 3px
     width:160px
     height:40px
@@ -266,7 +278,11 @@ input[type="submit"]
     background: rgba(255, 255, 255, .3)
     font-size: 1.5em
     text-decoration: none
+    font-weight: 300
     color: white
+    &:hover
+        background-color: rgba(255, 255, 255, 0.2)
+
 /*Checkboxe Styling*/
 input[type="checkbox"]
     -webkit-appearance: none

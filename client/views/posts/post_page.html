@@ -5,13 +5,23 @@
     {{#if resolved}}
       {{> postResolution}}
     {{/if}}
+    <div class="post auto-height-post">
+      <div class = "whiteblur post-background"></div>
+        <div class="post-body-detail">
+          {{#if hasComment}}
+          <h3 id="comment-label">Comments</h3>
+          {{else}}
+          <h3 id="comment-label">No Comments</h3>
+          {{/if}}
+          <ul class="comments">
+            {{#each comments}}
+              {{> comment}}
+            {{/each}}
+          </ul>
+        </div>
+    </div>
     <div class="post">
       <div class = "whiteblur post-background"></div>
-      <ul class="comments">
-        {{#each comments}}
-          {{> comment}}
-        {{/each}}
-      </ul>
       {{#if currentUser}}
         {{> commentSubmit}}
       {{else}}

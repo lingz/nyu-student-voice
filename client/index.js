@@ -7,6 +7,7 @@ Meteor.subscribe('notifications');
 Meteor.subscribe('tags');
 Deps.autorun(function() {
   Meteor.subscribe('comments', Session.get('currentPostId'));
+  Meteor.subscribe('ownComments', Session.get('currentPostId'));
   Meteor.subscribe('singlePost', Session.get('currentPostId'));
 });
 Session.set("tags", []);
