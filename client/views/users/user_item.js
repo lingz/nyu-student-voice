@@ -14,9 +14,9 @@ Template.userItem.events({
 
     Meteor.call("changeUserPermissions", userId, newType, function(err, resp){
       if (err) {
-        Meteor.Errors.throwError(err.reason);
+        Meteor.userError.throwError(err.reason);
       } else if (resp === false){
-        Meteor.Errors.throwError("Sorry, you don't have permission to do that.");
+        Meteor.userError.throwError("Sorry, you don't have permission to do that.");
       }
     });
   }

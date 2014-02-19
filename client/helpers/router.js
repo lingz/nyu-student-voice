@@ -34,7 +34,7 @@ Meteor.Router.filters({
       return 'accessDenied';
   },
   'clearErrors': function(page) {
-    Meteor.Errors.clear();
+    Meteor.userError.clear();
     return page;
   }
 });

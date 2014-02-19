@@ -14,7 +14,7 @@ Template.postSubmit.events({
 
       Meteor.call('post', post, function(error, id){
         if (error){
-          Meteor.Errors.throwError(error.reason);
+          Meteor.userError.throwError(error.reason);
 
           if (error.error === 302) {
             Meteor.Router.to('postPage', error.details);
@@ -27,7 +27,7 @@ Template.postSubmit.events({
       var currentPostId = this._id;
       Posts.update(this._id, {$set: post}, function(error) {
         if (error) {
-          Meteor.Errors.throwError(error.reason);
+          Meteor.userError.throwError(error.reason);
         } else {
           Meteor.Router.to('postPage', currentPostId);
         }

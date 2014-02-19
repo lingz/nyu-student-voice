@@ -14,7 +14,7 @@ Template.commentSubmit.events({
 
     Meteor.call('comment', comment, function(error, commentId) {
       if (error) {
-        Meteor.Errors.throwError(error.reason);
+        Meteor.userError.throwError(error.reason);
         window.scrollTo(0, 0);
       } else {
         $body.val('');

@@ -11,5 +11,5 @@ paginated-subscription
 stylus
 standard-app-packages
 accounts-googleapps-meteor
-errors
 googleapps-meteor
+userErrors

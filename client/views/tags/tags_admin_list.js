@@ -4,7 +4,7 @@ Template.tagsAdminList.events({
     var tagName = $("#new-tag-input");
     
     if (tagName.val().length === 0) {
-      Meteor.Errors.throwError("Your tag name can't be empty");
+      Meteor.userError.throwError("Your tag name can't be empty");
       return;
     }
     Tags.insert({
