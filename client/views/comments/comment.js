@@ -1,6 +1,8 @@
 Template.comment.helpers({
   submittedText: function() {
-    return new Date(this.submitted).toString();
+  	var date = new Date(this.submitted);
+  	date = moment(date).format('MMMM Do YYYY, h:mm a');
+  	return date
   },
   canDelete: function() {
     return this.realId == Meteor.userId() || 
