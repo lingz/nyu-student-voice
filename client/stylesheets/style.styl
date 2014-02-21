@@ -72,7 +72,7 @@ body
     width:120px
     height:50px
     float:left
-    margin-top:50px
+    margin-top:25px
     margin-left:25px
     border: solid #fff 1px
     position:relative
@@ -105,7 +105,7 @@ body
         pointer-events: none
         opacity:0.3
 .post 
-    height:150px
+    height:100px
     margin-bottom:10px
     width: -webkit-calc(unquote("100% - 50px"))
     width: -moz-calc(unquote("100% - 50px"))
@@ -170,6 +170,7 @@ body
         margin: 0px
    .comment-form
         padding: 5px 15px
+        overflow: hidden
         .control-group
             .controls
                 textarea
@@ -185,13 +186,27 @@ body
                     border: 1px solid white
                     color:white
         #comment-submit
+            font-family: Lato
             font-size: 1em
+            float: right
         .comment-text-box
             height: 100px
+            font-family: Lato
+            font-weight: 300
+        label[for="anon"]
+            color: white
+        #comment-submit-control
+            margin-top: 5px
+            margin-bottom: 5px
+        #comment-anonymous
+            float: left
+            font-weight: 200
 
 /*details page*/
 .auto-height-post
     height: auto
+    p
+        font-size: 0.9em
 #details
     margin-top: 0px
 #comment-label
@@ -226,8 +241,8 @@ body
         font-weight: 400
     .inner-forms
         margin: 5px 0px 0px 0px
-        padding-bottom: 10px;
         position: relative
+        overflow: hidden
         .submit-background
             position: absolute
             height: 100%
@@ -247,7 +262,7 @@ body
                 input[type="checkbox"]
                     margin-left: 5px
                     margin-top: 2px
-                input[type="submit"]
+                button[type="submit"]
                     font-family: Lato
                     font-weight: 300
             .control-label
@@ -271,7 +286,7 @@ body
                 font-weight: 300
             .tag-label-class
                 display: inline-block
-                margin-right: 5px
+                margin-right: 5pxs
             #select-tag
                 width: -webkit-calc(unquote("100% - 170px"))
 
@@ -338,13 +353,22 @@ input[type="checkbox"]:checked:after
             width:80px
             a
                 font-size:0.8em
+            margin-left: 10px
         .post-content-wrapper
-            margin-left: 120px
+            margin-left: 100px
+            margin-right: 10px
             position: absolute
             font-size:0.8em
             .post-content-container
                 .post-content
                     padding:0px
+        #comment-submit
+            width: 100%
+            margin-bottom: 6px
+        #comment-anonymous
+            float: right
+        .post-body-detail
+            padding: 10px 15px 10px 15px
     .splash
         height:55%
         #login-title
@@ -358,14 +382,12 @@ input[type="checkbox"]:checked:after
                 /*tags readjust to below submit button*/
                 #select-tag
                     display: inline-block
-                    width: -webkit-calc(unquote("100% - 50px"))
-                    width: -moz-calc(unquote("100% - 50px"))
-                    width: calc(unquote("100% - 50px"))
+                    width: 100%
                 .block-level
                     padding: 2px 5px
                     -moz-padding-end: 2px 5px;
                     -moz-padding-start: 2px 5px;
         #post-submit-container
             width: 100%
-            input[type="submit"]
+            button[type="submit"]
                 width: 100%

@@ -6,10 +6,14 @@
         <textarea name="body" class="comment-text-box" rows="2" placeholder="Comment on this post..."></textarea>
       </div>
     </div>
-    <div class="control-group">
+    <div class="control-group" id="comment-submit-control">
       <div class="controls">
-        <input type="checkbox" id="anon" name="anon" class="anon"><label for="anon">Post Anonymously</label>
+        <div id="comment-anonymous">
+          <label for="anon">Post Anonymously</label>
+          <input type="checkbox" id="anon" name="anon" class="anon">
+        </div>
         <button id = "comment-submit" class="btn btn-block" type="submit">Add Comment</button>
+        <span class="clear"></span>
       </div>
     </div>
   </form>
