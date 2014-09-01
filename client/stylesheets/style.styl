@@ -36,8 +36,15 @@ nav ul
         color:white
         text-decoration:none
 
+#navBarContainer
+    height: auto    
+
+
 #main
     padding-top:50px
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
 
 body
     background:url('/images/purpleBlur.jpg')
@@ -45,6 +52,7 @@ body
     background-repeat: no-repeat
     background-size: cover
     background-attachment: fixed
+    min-width: 320px
 
 /*login page*/
 .splash
@@ -81,6 +89,10 @@ body
     a
         text-decoration: none
         color: #fff
+    &:hover
+        background-color: rgba(255, 255, 255, 0.38)
+        cursor: pointer
+
 
 
 
@@ -104,8 +116,9 @@ body
         background:#fff
         pointer-events: none
         opacity:0.3
-.post 
-    height:100px
+.post
+    min-height: 100px
+    height: auto
     margin-bottom:10px
     width: -webkit-calc(unquote("100% - 50px"))
     width: -moz-calc(unquote("100% - 50px"))
@@ -337,7 +350,20 @@ input[type="checkbox"]:checked:after
 @media screen and (max-width: 768px)
     .post
         margin-left:25px
+        .post-content
+            p
+                margin: 0px 
+    #post-title
+        font-size: 1em
 
+@media screen and (max-width: 600px)
+    .post-title-author
+        display: table
+    .post-content
+        display: table-cell
+        vertical-align: middle
+        a
+            float: left
 
 
 @media screen and (max-width: 480px)
@@ -351,14 +377,10 @@ input[type="checkbox"]:checked:after
     .post
         .upvote-container
             width:80px
-            a
-                font-size:0.8em
             margin-left: 10px
         .post-content-wrapper
             margin-left: 100px
             margin-right: 10px
-            position: absolute
-            font-size:0.8em
             .post-content-container
                 .post-content
                     padding:0px
