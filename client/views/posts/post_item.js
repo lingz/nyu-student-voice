@@ -36,9 +36,6 @@ Template.postItem.helpers({
     } else {
       return "btn-warning";
     }
-  },
-  hasPostTags: function() {
-    return (this.tags !== undefined && this.tags.length > 0);
   }
 });
 

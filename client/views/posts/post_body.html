@@ -13,6 +13,15 @@
         <div class="post-body-detail">
           <h3 id="{{titleColor title}}"> {{title}} </h3>
           <p> {{body}}</p>
+          {{#if hasPostTags}}
+            <ul class="post-tags">
+              {{#each tags}}
+                <li>
+                  {{this}}
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
         </div>
     </div>
   </div>

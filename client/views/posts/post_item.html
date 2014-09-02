@@ -1,4 +1,4 @@
-  <template name="postItem">
+<template name="postItem">
   <div class="post">
     <div class="whiteblur post-background"></div>
       <div class="upvote-container {{upvotedClass}}">
@@ -30,14 +30,5 @@
         {{/if}}
       </div>
     </div>
-    {{#if hasPostTags}}
-      <ul class="post-tags">
-        {{#each tags}}
-          <li>
-            {{this}}
-          </li>
-        {{/each}}
-      </ul>
-    {{/if}}
   </div>
 </template>

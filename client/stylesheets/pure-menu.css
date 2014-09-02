@@ -1,5 +1,6 @@
 /* CSS-only drop-down menu */
 
+
 .pure-menu ul li:hover > ul,
 .pure-menu menu li:hover > ul,
 .pure-menu ul li:hover > menu,
@@ -8,6 +9,7 @@
     top: 0;
     left: 100%;
     visibility: visible;
+    background-color: white;
 }
 
 /* first sub-menu rolls under parent one for hirizonval view */

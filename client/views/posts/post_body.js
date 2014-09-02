@@ -2,9 +2,9 @@ Template.postDetail.helpers({
   options: function() {
     var opts = {
       title: "Details",
-      body: this.message
+      body: this.message,
+      tags: this.tags
     };
-
     return opts;
   }
 });
@@ -13,7 +13,8 @@ Template.postResolution.helpers({
   options: function() {
     var opts = {
       title: "Resolution",
-      body: this.resolution
+      body: this.resolution,
+      tags: this.tags
     };
 
     return opts;
@@ -38,5 +39,8 @@ Template.postBody.helpers({
     } else {
       return "No details provided";
     }
+  },
+  hasPostTags: function() {
+    return (this.tags !== undefined && this.tags.length > 0);
   }
 });
